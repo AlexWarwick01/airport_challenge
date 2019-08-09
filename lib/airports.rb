@@ -1,4 +1,5 @@
 class Airport
+  DEFAULTCAPA = 20
   def initialize
     @planes = []
   end
@@ -9,12 +10,17 @@ class Airport
 
   def land?(plane)
     fail "Too Stormy!" unless weather
+    fail "Airport Full!" if full?
     @planes << plane
   end
 
   def take_off(plane)
     fail "Too Stormy!" unless weather
     @planes.delete(plane)
+  end
+
+  def full?
+    @planes.count >= DEFAULTCAPA
   end
 
   def weather

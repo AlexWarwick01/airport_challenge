@@ -12,6 +12,11 @@ describe Airport do
     it 'should raise an error when its too stormy to land' do
       expect{ raise subject.weather }.to raise_error("Too Stormy!")
     end
+
+    it 'should not allow landings if airport is full' do
+      20.times{ subject.land? Planes.new}
+      expect{ subject.land? Planes.new}.to raise_error("Airport Full!")
+    end
 end
   describe '#take_off' do
     it 'can make planes take off' do
