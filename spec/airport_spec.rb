@@ -9,6 +9,9 @@ describe Airport do
       plane = Planes.new
       expect(subject.land?(plane)).eql?(plane)
     end
+    it 'should raise an error when its too stormy to land' do
+      expect{ raise subject.weather }.to raise_error("Too Stormy!")
+    end
 end
   describe '#take_off' do
     it 'can make planes take off' do
@@ -20,9 +23,10 @@ end
       plane = Planes.new
       expect(subject.whatplanes?).not_to include(plane)
     end
-
     it 'should raise an error when its too stormy to take off' do
-      expect{ subject.weather }.to raise_error("Too Stormy!").when weather = true
+      expect{ raise subject.weather }.to raise_error("Too Stormy!")
     end
+
   end
+
 end

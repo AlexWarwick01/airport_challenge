@@ -8,6 +8,7 @@ class Airport
   end
 
   def land?(plane)
+    fail "Too Stormy!" unless weather
     @planes << plane
   end
 
@@ -19,9 +20,9 @@ class Airport
   def weather
     stormy = rand(1..10)
     if stormy = 7
-      return true
+      return "Too Stormy!"
     else
-      return false
+      return "Not Too Stormy!"
     end
   end
 end
